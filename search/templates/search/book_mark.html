@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" lang="zxx">
+<head>
+    {% load static %}
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Book Mark</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="{% static 'assets/img/mfavicon.ico' %}"/>
+    <meta charset="UTF-8">
+    <!-- CSS here -->
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/hamburgers.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+    <link href="{% static 'search/css/main.css' %}" rel="stylesheet" />
+    <style>
+    p::first-letter {
+      font-size: 200%;
+      color: #b367ff;
+    }
+</style>
+</head>
+<body>
+
+    <header>
+
+        <!-- Header Start background: linear-gradient(to right, #2c6dd5 0%, #2c6dd5 28%, #ff4b5a 91%, #ff4b5a 100%);-->
+        <div class="header-area header-transparent">
+            <div class="main-header header-sticky" >
+                <div class="container-fluid">
+                    <div class="menu-wrapper d-flex align-items-center justify-content-between">
+                        <!-- Logo -->
+                        <div class="logo">
+                            <a href="comingSoon"><img src="{% static 'assets/img/logo/my_logo.png' %}"  width="100" height="100" alt=""></a>
+                        </div>
+                        <!-- Main-menu -->
+                        <div class="main-menu f-right d-none d-lg-block">
+                            <nav>
+                                <ul id="navigation">
+                                    <li><a href="main">Home</a></li>
+                                    <li><a href="bookmark">Bookmark</a></li>
+                                    <li><a href="#">Pages</a>
+                                    </li>
+                                    <li><a href="comingSoon">Blog</a>
+                                    </li>
+                                    <li><a href="comingSoon">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- Header-btn -->
+                        <div class="header-btns d-none d-lg-block f-right">
+                            <a href="login" class="mr-40"><i class="ti-user"></i> Log in</a>
+                            <a href="main" class="btn">search</a>
+                        </div>
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+     </header>
+    <main>
+	<div class="slider-area2">
+            <div class="slider-height4  hero-overly d-flex align-items-center" style="background-image: url({% static 'assets/img/c2.jpg' %}) ">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap2 pt-20 text-center">
+                                <h2 >your Bookery</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<!--? Start Align Area -->
+        {% for a, b , title ,date ,status, review in book_list %}
+            <div class="whole-wrap">
+			<div class="container box_1170">
+				<div class="section-top-border">
+					<h3 class="mb-30" style="color: #363f96">{{ title }}</h3>
+
+					<div class="row">
+						<div class="col-md-3">
+{#							<img src="{% static 'assets/img/read.jpeg' %}"  alt="" class="img-fluid">#}
+
+						</div>
+						<div class="col-md-9 mt-sm-20">
+							<p>Review :</p>
+                                <div class="md-form">
+{#                                  <textarea style="border-color: #b367ff; resize: none;"#}
+{#                                          name="treview" class="md-textarea form-control" rows="3">#}
+{#                                      {{ review }}#}
+{#                                  </textarea>#}
+                                    <br>
+{#                                    <button type="submit" name="r" value="{{ item.title }}" class="genric-btn primary circle arrow">add</button>#}
+                                    <div class="input-field">
+                                        <div class="input-select">
+                                          <form role="form" action="http://127.0.0.1:8000/review" method="POST">
+                                            {% csrf_token %}
+                                              <textarea style="border-color: #b367ff; resize: none;"
+                                          name="review" class="md-textarea form-control" rows="3">
+                                      {{ review }}
+                                  </textarea>
+                                            <div class="input-group">
+                                                <button type="submit" name="id" value={{ a }} class="genric-btn primary circle arrow">add</button>
+                                             </div>
+                                            </form>
+                                        </div>
+                                </div>
+
+                                </div>
+					    </div>
+				    </div>
+			    </div>
+            </div>
+		</div>
+
+        {% endfor %}
+
+		<!-- End Align Area -->
+        <!-- Want To work 02-->
+        <section class="wantToWork-area">
+            <div class="container">
+                <div class="wants-wrapper w-padding2">
+                    <div class="row justify-content-between">
+                        <div class="col-xl-8 col-lg-8 col-md-7">
+                            <div class="wantToWork-caption wantToWork-caption2">
+                                <img src="{% static 'assets/img/logo/my_logo.png' %}" alt="" class="mb-20">
+                                <p>our goal at Bookery is to help you find books and mark them to make your own bookery. :)</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-5">
+                            <div class="footer-social f-right sm-left">
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Want To work End -->
+
+        <!-- Want To work End -->
+    </main>
+    <footer>
+        <div class="footer-wrapper pt-30">
+            <!-- footer-bottom -->
+            <div class="footer-bottom-area">
+                <div class="container">
+                    <div class="footer-border">
+                        <div class="row d-flex justify-content-between align-items-center">
+                            <div class="col-xl-10 col-lg-9 ">
+                                <div class="footer-copy-right">
+                                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Scroll Up -->
+    <div id="back-top" >
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
+      <!-- JS here -->
+
+      <script src="{% static 'assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+      <!-- Jquery, Popper, Bootstrap -->
+      <script src="{% static 'assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+      <script src="{% static 'assets/js/popper.min.js' %}"></script>
+      <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+      <!-- Jquery Mobile Menu -->
+      <script src="{% static 'assets/js/jquery.slicknav.min.js' %}"></script>
+
+      <!-- Jquery Slick , Owl-Carousel Plugins -->
+      <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+      <script src="{% static 'assets/js/slick.min.js' %}"></script>
+      <!-- One Page, Animated-HeadLin -->
+      <script src="{% static 'assets/js/wow.min.js' %}"></script>
+      <script src="{% static 'assets/js/animated.headline.js' %}"></script>
+      <script src="{% static 'assets/js/jquery.magnific-popup.js' %}"></script>
+
+      <!-- Date Picker -->
+      <script src="{% static 'assets/js/gijgo.min.js' %}"></script>
+      <!-- Nice-select, sticky -->
+      <script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+      <script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
+
+      <!-- counter , waypoint,Hover Direction -->
+      <script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
+      <script src="{% static 'assets/js/waypoints.min.js' %}"></script>
+      <script src="{% static 'assets/js/jquery.countdown.min.js' %}"></script>
+      <script src="{% static 'assets/js/hover-direction-snake.min.js' %}"></script>
+
+      <!-- contact js -->
+      <script src="{% static 'assets/js/contact.js' %}"></script>
+      <script src="{% static 'assets/js/jquery.form.js' %}"></script>
+      <script src="{% static 'assets/js/jquery.validate.min.js' %}"></script>
+      <script src="{% static 'assets/js/mail-script.js' %}"></script>
+      <script src="{% static 'assets/js/jquery.ajaxchimp.min.js' %}"></script>
+
+      <!-- Jquery Plugins, main Jquery -->
+      <script src="{%static 'assets/js/plugins.js' %}"></script>
+      <script src="{% static 'assets/js/main.js' %}"></script>
+
+
+	</body>
+</html>
